@@ -1,0 +1,110 @@
+{
+  "kind": "memento-history",
+  "assets": [
+    {
+      "path": "jan1.html",
+      "bytes": 56,
+      "sha256": "1b9710dfc53f71e477ef436b76998d6e37f7a4fc2f07945ff9804ee4bd9bed35"
+    },
+    {
+      "path": "jan3.html",
+      "bytes": 29,
+      "sha256": "c15df57be6f4626e523f94293c7c00bfa54e025ca58b905b7410b472ac5baac2"
+    }
+  ],
+  "original": "https://origin.test/research",
+  "timegate": "https://origin.test/gate",
+  "timemap": "https://archive.test/map",
+  "cutoff": "2026-01-02T00:00:00Z",
+  "allowed_origins": [
+    "https://origin.test",
+    "https://archive.test"
+  ],
+  "auth_scope": "demo-user-A",
+  "representation_headers": {
+    "Accept-Language": "en"
+  },
+  "calls": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://origin.test/gate",
+        "headers": {
+          "Accept-Datetime": "Fri, 02 Jan 2026 00:00:00 GMT",
+          "Authorization": "Bearer DEMO-NOT-SECRET"
+        }
+      },
+      "response": {
+        "status": 302,
+        "headers": {
+          "Location": "https://archive.test/m3"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://archive.test/m3"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Memento-Datetime": "Sat, 03 Jan 2026 00:00:00 GMT",
+          "Link": "<https://origin.test/research>; rel=\"original\", <https://archive.test/m1>; rel=\"memento\"; datetime=\"Thu, 01 Jan 2026 00:00:00 GMT\"; title=\"旧版, 校订;一\", <https://archive.test/m3>; rel=\"memento\"; datetime=\"Sat, 03 Jan 2026 00:00:00 GMT\"",
+          "Vary": "Accept-Language"
+        },
+        "body": {
+          "path": "jan3.html",
+          "bytes": 29,
+          "sha256": "c15df57be6f4626e523f94293c7c00bfa54e025ca58b905b7410b472ac5baac2"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://archive.test/map"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/link-format"
+        },
+        "text": "<https://origin.test/research>; rel=\"original\", <https://archive.test/m1>; rel=\"memento\"; datetime=\"Thu, 01 Jan 2026 00:00:00 GMT\"; title=\"旧版, 校订;一\", <https://archive.test/m3>; rel=\"memento\"; datetime=\"Sat, 03 Jan 2026 00:00:00 GMT\""
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://archive.test/m1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Memento-Datetime": "Thu, 01 Jan 2026 00:00:00 GMT",
+          "Link": "<https://origin.test/research>; rel=\"original\"",
+          "Vary": "Accept-Language"
+        },
+        "body": {
+          "path": "jan1.html",
+          "bytes": 56,
+          "sha256": "1b9710dfc53f71e477ef436b76998d6e37f7a4fc2f07945ff9804ee4bd9bed35"
+        }
+      }
+    }
+  ],
+  "max_redirects": 4,
+  "timemap_complete": false,
+  "cache": [
+    {
+      "uri": "https://archive.test/m1",
+      "accept_language": "zh",
+      "auth_scope": "demo-user-A",
+      "body": {
+        "path": "jan1.html",
+        "bytes": 56,
+        "sha256": "1b9710dfc53f71e477ef436b76998d6e37f7a4fc2f07945ff9804ee4bd9bed35"
+      }
+    }
+  ]
+}

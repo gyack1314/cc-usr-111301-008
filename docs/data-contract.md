@@ -1,0 +1,7 @@
+# 历史网页协商资料
+
+日期支持HTTP IMF-fixdate，按GMT精确秒解析；本次请求不接受模糊本地时间。Link解析保留<>目标、引号转义及多rel，用请求URI解析相对链接。TimeMap仅提供已知候选，timemap_complete=false时不能声明全历史最近。目标memento须在允许origin、original关系与日期一致。重定向只读GET，跨origin不得转发Authorization、Proxy-Authorization或原origin Cookie；示例令牌是公开合成值。
+
+calls为冻结交互记录，可信演练器按request的method/url匹配并给response，实际采集需自行构造协商头并保留实际请求。representation_headers加入各个归档请求，缓存以Vary字段的规范值及auth_scope隔离。缺少同身份实体的304应报需要无条件重取，不能借其他语言正文；没有额外响应时保持不完整。源不提供真实凭据，不发送消息。
+
+header中的Memento-Datetime为表示日期，cutoff为不晚于的选择界；TimeGate给m3比界晚，已知m1可选，保留排除m3证据。Link的title包含逗号和分号。初始Replay只按序校验method/url和返回记录，不完成历史选择或缓存。
